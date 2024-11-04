@@ -3,7 +3,8 @@ package ej;
 public class Porte extends Bloc {
     private boolean verouille;
 
-    public Porte(final int longueur, final int largeur, final int hauteur, final boolean verouille) {
+    public Porte(final int longueur, final int largeur, final int hauteur, final boolean verouille)
+            throws IllegalBlocException {
         super(longueur, largeur, hauteur);
         this.verouille = verouille;
         this.couleur = Couleur.BLEU;
@@ -13,9 +14,20 @@ public class Porte extends Bloc {
         return this.verouille;
     }
 
+    public void verrouiller() throws PorteVerrouilleException {
+
+        if (estVerrouilee()) {
+            throw new PorteVerrouilleException(); // Lève l'exception si la porte est verrouillée
+        } else {
+            this.verouille = !verouille; // Inverse l'état de verrouillage si la porte n'est pas verrouillée
+        }
+
+    }
+
     @Override
     public String toString() {
-        return "Mur [longeur=" + longueur + ", largeur=" + largeur + ", hauteur=" + hauteur + ", porteur=" + verouille
+        return "Porte [longeur=" + longueur + ", largeur=" + largeur + ", hauteur=" + hauteur + ", verouillée="
+                + verouille
                 + "]";
     }
 }
