@@ -12,8 +12,6 @@ public abstract class Bloc implements IBloc {
         this.hauteur = hauteur;
     }
 
-    public abstract void afficher();
-
     public int getLongueur() {
         return longueur;
     }

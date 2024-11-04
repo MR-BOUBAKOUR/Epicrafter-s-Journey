@@ -9,12 +9,13 @@ public class Mur extends Bloc {
         this.couleur = Couleur.GRIS;
     }
 
-    public void afficher() {
-        System.out.println(
-                super.longueur + " " + super.largeur + " " + super.hauteur + " " + super.couleur + " " + this.porteur);
-    }
-
     public boolean estTraversable() {
         return !this.porteur;
+    }
+
+    @Override
+    public String toString() {
+        return "Mur [longeur=" + longueur + ", largeur=" + largeur + ", hauteur=" + hauteur + ", porteur=" + porteur
+                + "]";
     }
 }

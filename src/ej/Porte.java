@@ -9,12 +9,13 @@ public class Porte extends Bloc {
         this.couleur = Couleur.BLEU;
     }
 
-    public void afficher() {
-        System.out.println(super.longueur + " " + super.largeur + " " + super.hauteur + " " + super.couleur + " "
-                + this.verouille);
-    }
-
     public boolean estVerrouilee() {
         return this.verouille;
+    }
+
+    @Override
+    public String toString() {
+        return "Mur [longeur=" + longueur + ", largeur=" + largeur + ", hauteur=" + hauteur + ", porteur=" + verouille
+                + "]";
     }
 }
