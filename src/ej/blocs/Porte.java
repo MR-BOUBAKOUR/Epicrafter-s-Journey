@@ -1,5 +1,7 @@
 package ej.blocs;
 
+import java.util.function.Predicate;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -7,7 +9,7 @@ import ej.exceptions.IllegalBlocException;
 import ej.exceptions.PorteVerrouilleException;
 
 public class Porte extends Bloc {
-	
+
 	private static Logger logger = LogManager.getLogger(Porte.class);
 
 	private boolean verrouillee;
@@ -28,6 +30,17 @@ public class Porte extends Bloc {
 			throw new PorteVerrouilleException();
 		} else {
 			verrouillee = true;
+		}
+	}
+
+	public void forcerSerrure(Predicate<String> fonction) {
+		String cleSecrete = "#secret123";
+		if (this.verrouillee) {
+			if (fonction.test(cleSecrete)) {
+				this.verrouillee = false;
+				System.out.println("La porte a été déverrouillée avec succès.");
+				System.out.println(this.verrouillee);
+			}
 		}
 	}
 
